@@ -71,7 +71,8 @@ from models.schemas import (
 )
 
 # Smoke-test parse_llm_response
-raw = '''```json
+raw = 
+```json
 {
     \"verdict\": \"BUY\",
     \"conviction_score\": 72,
@@ -81,7 +82,7 @@ raw = '''```json
     \"what_would_change_my_mind\": \"FCF yield drops below 5%.\",
     \"disagreement_with\": {\"cathie\": \"TAM is speculative\"}
 }
-```'''
+```
 
 arg = AgentArgument.parse_llm_response(
     raw,
