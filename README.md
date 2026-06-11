@@ -34,6 +34,28 @@ LLMs frequently fail to produce perfect JSON when under high pressure or token l
 
 ---
 
+## 🖥️ Real-Time Terminal UI
+
+The system features a high-fidelity terminal dashboard built with **Python's Rich library**, providing real-time visibility into the "thinking" process of the committee.
+<img width="1105" height="677" alt="image" src="https://github.com/user-attachments/assets/d881d1de-c006-42d6-867e-7df7c0d0a6b8" />
+<img width="1030" height="990" alt="image" src="https://github.com/user-attachments/assets/8d14b081-b3d2-4265-a001-c28bc3f98a87" />
+<img width="1030" height="1042" alt="image" src="https://github.com/user-attachments/assets/b3792578-0ca4-4bf7-a5db-e554f910d879" />
+
+
+### 🎨 UI Components
+*   **Analysts Panel**: A live table tracking all 4 agents. Includes status indicators (spinners for active thinking), color-coded stances (Bullish/Bearish/Hold), conviction scores, and live snippets of their arguments.
+*   **Debate Status**: Real-time telemetry showing the current round, orchestration mode (Explore/Exploit), agent stance distribution (Bull/Bear split), and the calculated convergence score.
+*   **Live Debate Stream**: A scrolling feed of full arguments as they are parsed, including system alerts for mode transitions, tie-breaker invocations, and budget adjustments.
+*   **Conflict Tracker**: A dedicated panel that isolates and displays detected disagreements between specific agents, categorized by type (Factual, Methodological, Philosophical, or Timing).
+*   **Budget Telemetry**: A full-width footer with a progress bar tracking token consumption against the total debate budget.
+
+### 🛠️ How It's Built
+*   **Engine**: Built using `Rich.live` and `Rich.layout` to maintain a persistent, non-flickering dashboard while the agents reason in the background.
+*   **Async Event Loop**: The orchestrator yields `DebateState` events via an `AsyncIterator`. The CLI loop consumes these events and triggers an immediate re-render of the dashboard.
+*   **Cross-Platform Rendering**: Implements global UTF-8 encoding patches and ASCII-safe boundary rendering (using `box.SIMPLE_HEAD`) to ensure stability across CMD, PowerShell, and modern terminal emulators like Windows Terminal or iTerm2.
+
+---
+
 ## 🛠 What was Refactored & Fixed
 
 *   **Gemini Schema Sanitization**: The Gemini API (google-genai) explicitly forbids `additionalProperties` in JSON schemas. I refactored the `GeminiProvider` to recursively strip these from Pydantic-generated schemas.
