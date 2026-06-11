@@ -72,14 +72,6 @@ The system features a high-fidelity terminal dashboard built with **Python's Ric
 *   **Token Accuracy**: The budget manager is "soft" — it allows agents to finish their thought even if they slightly exceed their grant (to prevent truncated JSON), but deducts the overage from future rounds.
 
 ---
-
-## 🤖 AI Usage & Prompts
-
-This project was built with assistance from AI coding tools. 
-*   **Full Prompt History**: All prompts given to the AI, along with design iterations and refactoring discussions, are documented in:
-    👉 [Code_Editor_conversation_dump-Investment_Committee.md](./Code_Edior_conversation%20_dump-Investment_Committee.md)
-
-
 ---
 
 ## 📋 Setup & Usage
